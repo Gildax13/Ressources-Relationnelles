@@ -43,6 +43,9 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/create', [RessourcesController::class, 'create']);
-Route::post('/ressource/store', [RessourcesController::class, 'store']);
+Route::get('createressource', [RessourcesController::class, 'create']);
+Route::post('storeressource', [RessourcesController::class, 'store']);
+
+
+
 require __DIR__.'/auth.php';

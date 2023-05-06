@@ -3,6 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Query\Expression;
+use App\Models\Category;
+use App\Models\Type;
+use App\Models\User;
+
 
 return new class extends Migration
 {
@@ -13,19 +18,11 @@ return new class extends Migration
     {
         Schema::create('ressources', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')
-            ->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
-            $table->foreignId('user_id');
-            $table->foreignId('type_id')->constrained()
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('content');
-            $table->text('file');
-            $table->text('icon');
+            $table->string('content');
+            $table->string('file')->nullable()->default('file.pdf');
+            $table->string('icon')->nullable()->default('icon.png');
             $table->timestamps();
         });
     }
