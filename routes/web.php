@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Ressources;
+use App\Http\Controllers\RessourcesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +28,21 @@ Route::get('/support', function () {
     return view('support');
 })->middleware(['auth', 'verified'])->name('support');
 
+Route::get('/ressources', function () {
+    $ressources = Ressources::all();
+
+    return view('ressources', [
+        'ressources' => $ressources
+    ]);
+})->middleware(['auth', 'verified'])->name('ressources');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('/create', [RessourcesController::class, 'create']);
+Route::post('/ressource/store', [RessourcesController::class, 'store']);
 require __DIR__.'/auth.php';
