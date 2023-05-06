@@ -21,26 +21,32 @@ class Ressources extends Model
      * @var array
      */
     protected $fillable = [
-        'category_id',
-        'user_id',
-        'type_id',
         'title',
         'content',
         'slug',
         'file',
         'icon',
     ];
-
-public function user(): BelongsTo
-{
-    return $this->belongsTo(User::class);
-}
-public function category(): BelongsTo
-{
-    return $this->belongsTo(Category::class);
-}
-public function type(): BelongsTo
-{
-    return $this->belongsTo(Type::class);
-}
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'title' => 'Default Title',
+        'file' => 'file.pdf',
+        'icon' => 'icon.png',
+    ];
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(Type::class);
+    }
 }

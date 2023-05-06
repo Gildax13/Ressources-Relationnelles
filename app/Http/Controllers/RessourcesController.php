@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ressources;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class RessourcesController extends Controller
@@ -20,19 +23,39 @@ class RessourcesController extends Controller
     /**
      * Store a new blog post.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request):View
     {
-        $validated = $request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'slug' => 'required|unique:posts|max:20',
-            'content' => 'required',
-
-
-        ]);
-        'App\Models\Etudiant'::create($request->all());
-
-        // The blog post is valid...
-
-        return redirect('/ressources');
+        // $this->validate($request, [
+        //     'title' => 'required|max:255',
+        //     'slug' => 'required|max:20',
+        //     'content' => 'required',
+        //     'icon' => 'required',
+        //     'file' => 'required',
+        // ]);
+        $title = $request->input('title');
+        $slug = $request->input('slug');
+        $content = $request->input('content');
+        $icon = $request->input('icon');
+        $file = $request->input('file');
+        $data=array(
+            'title'=>$title,
+            "slug"=>$slug,
+            "content"=>$content,
+            'icon'=>$icon,
+            "file"=>$file,
+        );
+        //dd($data);
+        DB::table('ressources')->insert($data);
+        return view('confirmressource');
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 }
