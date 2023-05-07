@@ -49,10 +49,11 @@
                             </tr>
                             <br>
                             <!-- Insérez les SELECT pour les ID des catégories, users et Type -->
-
+                            </table>
+                            <input type="submit" value="Envoyer !">
                         </form>
-                    </table>
-                    <input type="submit" value="Envoyer !">
+
+
                 </div>
             </div>
         </div>

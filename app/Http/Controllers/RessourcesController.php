@@ -45,7 +45,7 @@ class RessourcesController extends Controller
         $file = $request->input('file');
         $category = $request->categories_id;
         $type = $request->types_id;
-        $user =
+
         //$user = $request->user_id;
         $data=array(
             'title'=>$title,
@@ -56,7 +56,7 @@ class RessourcesController extends Controller
             "categories_id"=>$category,
             "types_id"=>$type,
         );
-        //dd($data);
+        dd($data);
         DB::table('ressources')->insert($data);
         return view('confirmressource');
     }
