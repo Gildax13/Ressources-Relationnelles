@@ -26,6 +26,9 @@ class Ressources extends Model
         'slug',
         'file',
         'icon',
+        'categories_id',
+        'users_id',
+        'types_id',
     ];
     /**
      * The model's default values for attributes.
