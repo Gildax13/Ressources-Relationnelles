@@ -9,6 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use App\Models\Category;
+use App\Models\Type;
 
 class RessourcesController extends Controller
 {
@@ -17,7 +19,11 @@ class RessourcesController extends Controller
      */
     public function create(): View
     {
-        return view('createressource');
+        $type = Type::all();
+        $category = Category::all();
+        return view('createressource',
+        ['types' => $type,
+        'categories' => $category]);
     }
 
     /**
@@ -37,12 +43,18 @@ class RessourcesController extends Controller
         $content = $request->input('content');
         $icon = $request->input('icon');
         $file = $request->input('file');
+        $category = $request->categories_id;
+        $type = $request->types_id;
+        $user =
+        //$user = $request->user_id;
         $data=array(
             'title'=>$title,
             "slug"=>$slug,
             "content"=>$content,
             'icon'=>$icon,
             "file"=>$file,
+            "categories_id"=>$category,
+            "types_id"=>$type,
         );
         //dd($data);
         DB::table('ressources')->insert($data);
