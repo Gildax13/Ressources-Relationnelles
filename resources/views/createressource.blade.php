@@ -12,23 +12,27 @@
                         <form action="{{ url('storeressource') }}" method="POST">
                             @csrf
                             <tr>
-                                <td><label class="text-white" for="title">Entrez le titre: </label></td>
+                                <td><label class="text-white" for="title">Entrez le titre : </label></td>
                                 <td><input type="text" name="title" id="title"></td>
                             </tr>
                             <tr>
-                                <td><label class="text-white" for="content">Entrez le Contenu: </label></td>
+                                <td><label class="text-white" for="content">Entrez le Contenu : </label></td>
                                 <td><input type="text" name="content" id="content"></td>
                             </tr>
                             <tr>
-                                <td><label class="text-white" for="slug">Entrez le slug: </label></td>
+                                <td><label class="text-white" for="desc">Entrez la description : </label></td>
+                                <td><input type="text" name="desc" id="desc"></td>
+                            </tr>
+                            <tr>
+                                <td><label class="text-white" for="slug">Entrez le slug : </label></td>
                                 <td><input type="text" name="slug" id="slug"></td>
                             </tr>
                             <tr>
-                                <td><label class="text-white" for="file">Entrez le file: </label></td>
+                                <td><label class="text-white" for="file">Entrez le file : </label></td>
                                 <td><input type="file" name="file" id="file"></td>
                             </tr>
                             <tr>
-                                <td><label class="text-white" for="icon">Ajouter l'icone: </label></td>
+                                <td><label class="text-white" for="icon">Ajouter l'icone : </label></td>
                                 <td><input type="file" name="icon" id="icon"></td>
                             </tr>
                             <tr>

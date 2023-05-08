@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Type;
+use App\Models\Category;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,5 +19,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+         Type::factory()->create([
+             'name' => 'Type1',
+             `updated_at`,
+            `created_at`,
+         ]);
+        Category::factory()->create([
+            'name' => 'Category1',
+        ]);
     }
 }
