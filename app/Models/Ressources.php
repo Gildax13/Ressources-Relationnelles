@@ -23,6 +23,7 @@ class Ressources extends Model
     protected $fillable = [
         'title',
         'content',
+        'description',
         'slug',
         'file',
         'icon',
@@ -39,6 +40,7 @@ class Ressources extends Model
         'title' => 'Default Title',
         'file' => 'file.pdf',
         'icon' => 'icon.png',
+        'description' => 'C\'est une description connard'
     ];
     public function user(): BelongsTo
     {

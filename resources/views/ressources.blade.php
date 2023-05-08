@@ -14,9 +14,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <ul>
-                        <li>{{ $res->title }}</li>
-                    </ul>
+                <table>
+                <tr>
+                    <td><img class="h-16" src="img/{{ $res->icon }}"></td>
+                    <td><h1>{{ $res->title }}</h1> <p>{{ $res->description }}</p></td>
+                </tr>
+
+                </table>
                 </div>
             </div>
         </div>

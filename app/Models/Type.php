@@ -13,8 +13,9 @@ class Type extends Model
     protected $fillable = [
         'type',
     ];
-    public function ressources():HasMany
-{
-    return $this->hasMany(Ressources::class);
-}
+
+    public function ressources(): HasMany
+    {
+        return $this->hasMany(Ressources::class);
+    }
 }
