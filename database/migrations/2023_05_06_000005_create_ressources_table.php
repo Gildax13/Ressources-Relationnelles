@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('content');
             $table->string('description');
-            $table->string('file');
-            $table->string("icon",150);
+            $table->string('file')->nullable()->default('file.pdf');
+            $table->string('icon')->nullable()->default('icon.png');
             $table->foreignId('categories_id')->references('id')->on('categories');
             $table->foreignId('users_id')->references('id')->on('users');
             $table->foreignId('types_id')->references('id')->on('types');
