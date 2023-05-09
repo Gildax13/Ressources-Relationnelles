@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
 Route::get('createressource', [RessourcesController::class, 'create']);
 Route::post('storeressource', [RessourcesController::class, 'store']);
 
+Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
 
 
 require __DIR__.'/auth.php';

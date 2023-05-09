@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use App\Models\Category;
 use App\Models\Type;
@@ -31,24 +32,15 @@ class RessourcesController extends Controller
      */
     public function store(Request $request):View
     {
-        // $this->validate($request, [
-        //     'title' => 'required|max:255',
-        //     'slug' => 'required|max:20',
-        //     'content' => 'required',
-        //     'icon' => 'required',
-        //     'file' => 'required',
-        // ]);
         $title = $request->input('title');
         $slug = $request->input('slug');
         $content = $request->input('content');
-        $icon = $request->input('icon');
+        $icon = $request->icon;
         $file = $request->input('file');
         $category = $request->categories_id;
         $type = $request->types_id;
         $desc = $request->input('desc');
-        
-        
-        //$user = $request->user_id;
+        //dd($request->icon->getClientOriginalName());
         $data=array(
             "title"=>$title,
             "slug"=>$slug,
@@ -58,8 +50,12 @@ class RessourcesController extends Controller
             "description" => $desc,
             "users_id" => auth()->user()->id,
         );
+        //dd($request->icon);
         if($icon != null){
-            $data["icon"] = $icon;
+            $data["icon"] = $icon->getClientOriginalName();
+            $icon->storeAs('public/icons',$icon->getClientOriginalName());
+            // $nameFile = Storage::disk('public')->put('icons/'.$icon->getClientOriginalName(), $icon);
+            // dd(Storage::get($nameFile));
         }
         if($file != null){
             $data["file"] = $file;
@@ -74,8 +70,17 @@ class RessourcesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $ressource = Ressources::where('id', '=', $id)->firstOrFail();
+        //dd($ressource);
+        return view('showressource',
+        ['ressource' => $ressource]);
     }
+
+
+
+
+
+
 }
