@@ -10,7 +10,7 @@
                 <div class="p-6">
                     <br>
                     <div class="container">
-                        <div class="row card text-white bg-dark">
+                        <div class="row card text-white bg-dark dark:text-white text-black">
                             <h4 class="card-header">Merci pour l'ajout de votre ressource</h4>
                             <div class="card-body">
                                 <p class="card-text">Votre ressource a bien été ajouter dans le système</p>
