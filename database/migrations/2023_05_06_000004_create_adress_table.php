@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('street');
             $table->bigInteger('postalCode');
             $table->text('city');
+            $table->timestamps();
         });
     }
 
