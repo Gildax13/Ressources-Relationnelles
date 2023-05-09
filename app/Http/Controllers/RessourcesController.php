@@ -46,19 +46,24 @@ class RessourcesController extends Controller
         $category = $request->categories_id;
         $type = $request->types_id;
         $desc = $request->input('desc');
-
+        
+        
         //$user = $request->user_id;
         $data=array(
             "title"=>$title,
             "slug"=>$slug,
             "content"=>$content,
-            "icon"=>$icon,
-            "file"=>$file,
             "categories_id"=>$category,
             "types_id"=>$type,
             "description" => $desc,
             "users_id" => auth()->user()->id,
         );
+        if($icon != null){
+            $data["icon"] = $icon;
+        }
+        if($file != null){
+            $data["file"] = $file;
+        }
         //dd($data);
         DB::table('ressources')->insert($data);
         return view('confirmressource');

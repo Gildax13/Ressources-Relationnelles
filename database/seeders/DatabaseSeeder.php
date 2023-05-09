@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Type;
 use App\Models\Category;
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -22,11 +23,10 @@ class DatabaseSeeder extends Seeder
 
          Type::factory()->create([
              'name' => 'Type1',
-             `updated_at`,
-            `created_at`,
          ]);
         Category::factory()->create([
             'name' => 'Category1',
         ]);
+        User::factory()->create();
     }
 }
