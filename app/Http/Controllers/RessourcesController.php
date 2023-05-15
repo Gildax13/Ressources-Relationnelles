@@ -33,7 +33,6 @@ class RessourcesController extends Controller
     public function store(Request $request):View
     {
         $title = $request->input('title');
-        $slug = $request->input('slug');
         $content = $request->input('content');
         $icon = $request->icon;
         $file = $request->input('file');
@@ -43,7 +42,6 @@ class RessourcesController extends Controller
         //dd($request->icon->getClientOriginalName());
         $data=array(
             "title"=>$title,
-            "slug"=>$slug,
             "content"=>$content,
             "categories_id"=>$category,
             "types_id"=>$type,
@@ -73,9 +71,14 @@ class RessourcesController extends Controller
     public function show(int $id)
     {
         $ressource = Ressources::where('id', '=', $id)->firstOrFail();
+        $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
+        //dd($user);
+        $url = '/storage/icons/'.$ressource->icon;
         //dd($ressource);
         return view('showressource',
-        ['ressource' => $ressource]);
+        ['ressource' => $ressource,
+            'url' => $url,
+        'user'=> $user]);
     }
 
 

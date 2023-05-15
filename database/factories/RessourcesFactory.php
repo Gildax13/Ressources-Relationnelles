@@ -18,7 +18,6 @@ class RessourcesFactory extends Factory
     {
         $title = fake()->word();
         $content = fake()->paragraph();
-        $slug = fake()->word();
         $file = "file.mp4";
         $icon = "icon.png";
         $category_id = fake()->randomDigit();
@@ -31,7 +30,6 @@ class RessourcesFactory extends Factory
         'type_id'=> $type_id,
         'title'=> $title,
         'content'=> $content,
-        'slug'=> $slug,
         'file'=> $file,
         'icon'=> $icon,
         ];

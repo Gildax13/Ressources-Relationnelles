@@ -24,10 +24,6 @@
                                 <td><input type="text" name="desc" id="desc"></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="slug">Entrez le slug : </label></td>
-                                <td><input type="text" name="slug" id="slug"></td>
-                            </tr>
-                            <tr>
                                 <td><label class="dark:text-white text-black" for="file">Entrez le file : </label></td>
                                 <td><input type="file" name="file" id="file"></td>
                             </tr>

@@ -24,7 +24,6 @@ class Ressources extends Model
         'title',
         'content',
         'description',
-        'slug',
         'file',
         'icon',
         'categories_id',
