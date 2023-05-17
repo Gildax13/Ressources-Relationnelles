@@ -48,9 +48,26 @@
                         {{$ressource->content}}
                 </td>
                 </table>
-            </div></a>
+            </div>
         </div>
     </div>
-    <br>
+    
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
+            <table>
+                        <form action="{{ url('/storecomment', [$ressource->id]) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <tr>
+                                <td style="width:20%"><label class="dark:text-white text-black" for="content">Saisir votre Commentaire</label></td>
+                                <td><input type="text" name="content" id="content" style="width:100%"></td>
+                            </tr>
+                            </table>
+                            <input type="submit" value="Envoyer !" style="border: 1px ridge black;">
+                </form>
+                <h1>Commentaires :</h1>
+            </div>
+        </div>
+    </div>
     </div>
 </x-app-layout>
