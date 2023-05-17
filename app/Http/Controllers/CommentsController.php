@@ -12,29 +12,26 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use App\Models\Category;
 use App\Models\Type;
+use App\Models\Comments;
 
-class CommentController extends Controller
+class CommentsController extends Controller
 {
     public function store(int $id,Request $request):View
     {
-        //dd($request);
         $content = $request->input('content');
-
-        //dd($request->icon->getClientOriginalName());
         $data=array(
             "content"=>$content,
             "ressources_id" => $id,
             "users_id" => auth()->user()->id,
         );
-        DB::table('comment')->insert($data);
-        $ressource = Ressources::where('id', '=', $id)->firstOrFail();
-        $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
-        //dd($user);
-        $url = '/storage/icons/'.$ressource->icon;
-        //dd($ressource);
-        return view('showressource',
-        ['ressource' => $ressource,
-            'url' => $url,
-        'user'=> $user]);
+        DB::table('comments')->insert($data);
+
+        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id);
+
+        return view('confirmcomment',
+        [
+            'ressource'=>$id
+        ]
+    );
     }
 }

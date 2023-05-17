@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Ressources;
 use App\Http\Controllers\RessourcesController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 Route::get('createressource', [RessourcesController::class, 'create']);
 Route::post('storeressource', [RessourcesController::class, 'store']);
 
-Route::post('storecomment/{id}', [CommentController::class, 'store']);
+Route::post('storecomment/{id}', [CommentsController::class, 'store']);
 
 Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
 

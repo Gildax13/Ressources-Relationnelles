@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use App\Models\Category;
 use App\Models\Type;
+use App\Models\Comments;
 
 class RessourcesController extends Controller
 {
@@ -71,6 +72,7 @@ class RessourcesController extends Controller
     public function show(int $id)
     {
         $ressource = Ressources::where('id', '=', $id)->firstOrFail();
+        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id);
         $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
         //dd($user);
         $url = '/storage/icons/'.$ressource->icon;
@@ -78,7 +80,9 @@ class RessourcesController extends Controller
         return view('showressource',
         ['ressource' => $ressource,
             'url' => $url,
-        'user'=> $user]);
+        'user'=> $user,
+        'comment' => $comment
+    ]);
     }
 
 
