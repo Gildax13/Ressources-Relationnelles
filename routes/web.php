@@ -29,6 +29,10 @@ Route::get('/support', function () {
     return view('support');
 })->middleware(['auth', 'verified'])->name('support');
 
+Route::get('/checksupport', function () {
+    return view('checksupport');
+})->middleware(['auth', 'verified', 'role:admin'])->name('checksupport');
+
 Route::get('/ressources', function () {
     $ressources = Ressources::all();
 
@@ -50,6 +54,12 @@ Route::post('storeressource', [RessourcesController::class, 'store']);
 Route::post('storecomment/{id}', [CommentsController::class, 'store']);
 
 Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/private',function(){
+        return 'Bonjour admin';
+    });
+});
 
 
 require __DIR__.'/auth.php';

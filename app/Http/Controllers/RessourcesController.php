@@ -72,7 +72,7 @@ class RessourcesController extends Controller
     public function show(int $id)
     {
         $ressource = Ressources::where('id', '=', $id)->firstOrFail();
-        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id);
+        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
         $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
         //dd($user);
         $url = '/storage/icons/'.$ressource->icon;

@@ -18,6 +18,14 @@
                     <x-nav-link :href="route('ressources')" :active="request()->routeIs('ressources')">
                         {{ __('Ressources') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('support')" :active="request()->routeIs('support')">
+                        {{ __('Support') }}
+                    </x-nav-link>
+                    @if(auth()->user()->role == 'admin')
+                    <x-nav-link :href="route('checksupport')" :active="request()->routeIs('checksupport')">
+                        {{ __('Demande de Support') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 
