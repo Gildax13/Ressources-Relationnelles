@@ -48,6 +48,7 @@ class RessourcesController extends Controller
             "types_id"=>$type,
             "description" => $desc,
             "users_id" => auth()->user()->id,
+            'created_at' => date('Y-m-d H:i:s'),
         );
         //dd($request->icon);
         if($icon != null){

@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Ressources;
 use App\Http\Controllers\RessourcesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\SupportController;
+use App\Models\Support;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +31,11 @@ Route::get('/support', function () {
     return view('support');
 })->middleware(['auth', 'verified'])->name('support');
 
-Route::get('/checksupport', function () {
-    return view('checksupport');
+Route::get('checksupport',function(){
+    $support = Support::all();
+    return view('checksupport', [
+        'support' => $support
+    ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('checksupport');
 
 Route::get('/ressources', function () {
@@ -56,9 +61,9 @@ Route::post('storecomment/{id}', [CommentsController::class, 'store']);
 Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/private',function(){
-        return 'Bonjour admin';
-    });
+    
+    Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
+    Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
 });
 
 
