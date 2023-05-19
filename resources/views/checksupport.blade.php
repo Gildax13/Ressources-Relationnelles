@@ -17,7 +17,7 @@ h1 {
             <a href="{{ url('/showsupport', [$sup->id]) }}"><div class="p-6 text-gray-900 dark:text-gray-100">
                 <table>
                 <tr>
-                    <td><h1>{{ $sup->subject }}</h1> <p>{{ $sub->user }}</p></td>
+                    <td><h1>{{ $sup->subject }}</h1> <p>{{ $sup->user }}</p></td>
                 </tr>
 
                 </table>

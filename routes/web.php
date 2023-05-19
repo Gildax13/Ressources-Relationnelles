@@ -57,12 +57,12 @@ Route::get('createressource', [RessourcesController::class, 'create']);
 Route::post('storeressource', [RessourcesController::class, 'store']);
 
 Route::post('storecomment/{id}', [CommentsController::class, 'store']);
+Route::post('storesupport', [SupportController::class, 'store']);
 
 Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
-    Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
     Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
 });
 

@@ -20,7 +20,7 @@ class SupportController extends Controller
     public function store(Request $request):View
     {
         $subject = $request->input('subject');
-        $reason = $request->input('reason');
+        $reason = $request->reason;
         $information = $request->input('information');;
         
         $data=array(
@@ -30,8 +30,8 @@ class SupportController extends Controller
             "users_id" => auth()->user()->id,
             'created_at' => date('Y-m-d H:i:s'),
         );
-        DB::table('ressources')->insert($data);
-        return view('confirmressource');
+        DB::table('supports')->insert($data);
+        return view('confirmsupport');
     }
     /**
      * Display the specified resource.
