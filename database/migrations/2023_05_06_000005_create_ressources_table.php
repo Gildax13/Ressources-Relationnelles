@@ -19,7 +19,7 @@ return new class extends Migration
         Schema::create('ressources', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('content');
+            $table->longText('content');
             $table->string('description');
             $table->string('file')->nullable();
             $table->string('icon')->default('icon.png')->nullable();

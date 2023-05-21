@@ -12,46 +12,46 @@
                         <form action="{{ url('storeressource') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <tr>
-                                <td><label class="dark:text-white text-black" for="title">Entrez le titre : </label></td>
-                                <td><input type="text" name="title" id="title"></td>
+                                <td><x-input-label for="title" :value="__('Titre')" /></td>
+                                <td><x-text-input id="title" class="block mt-1 w-full" type="text" name="title" required /></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="content">Entrez le Contenu : </label></td>
-                                <td><input type="text" name="content" id="content"></td>
+                                <td><x-input-label for="content" :value="__('Contenu')" /></td>
+                                <td><x-text-input id="content" class="block mt-1 w-full" type="text" name="content" required /></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="desc">Entrez la description : </label></td>
-                                <td><input type="text" name="desc" id="desc"></td>
+                            <td><x-input-label for="desc" :value="__('Description')" /></td>
+                                <td><x-text-input id="desc" class="block mt-1 w-full" type="text" name="desc" required /></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="file">Entrez le file : </label></td>
+                                <td><x-input-label for="file" :value="__('Fichier')" /></td>
                                 <td><input type="file" name="file" id="file"></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="icon">Ajouter l'icone : </label></td>
+                                <td><x-input-label for="icon" :value="__('Icone')" /></td>
                                 <td><input type="file" name="icon" id="icon" accept="image\png image\jpg"></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="icon">Type : </label></td>
+                                <td><x-input-label for="type" :value="__('Type de ressource')" /></td>
                                 <td><select name="types_id" id="type" class="form-control">
-                                @foreach($types as $type)
-                                <option value="{{ $type->id }}">{{ $type->name }}</option>
-                                @endforeach
-                            </select></td>
+                                        @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                        @endforeach
+                                    </select></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="icon">Catégorie : </label></td>
+                                <td><x-input-label for="category" :value="__('Catégorie de ressource')" /></td>
                                 <td><select name="categories_id" id="category" class="form-control">
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select></td>
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select></td>
                             </tr>
                             <br>
                             <!-- Insérez les SELECT pour les ID des catégories, users et Type -->
-                            </table>
-                            <input type="submit" value="Envoyer !">
-                        </form>
+                    </table>
+                    <input type="submit" value="Envoyer !">
+                    </form>
 
 
                 </div>

@@ -50,7 +50,7 @@ class RessourcesController extends Controller
             "users_id" => auth()->user()->id,
             'created_at' => date('Y-m-d H:i:s'),
         );
-        //dd($request->icon);
+        //dd($content);
         if($icon != null){
             $data["icon"] = $icon->getClientOriginalName();
             $icon->storeAs('public/icons',$icon->getClientOriginalName());
