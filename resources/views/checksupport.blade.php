@@ -6,23 +6,18 @@ h1 {
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Ressources') }}
+            {{ __('Demande de Support') }}
         </h2>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-        <div class="col-sm-3">
-        <a class="btn btn-outline-primary dark:text-white text-black" href="{{url('/createressource')}}">Ajouter une ressource</a>
-
-                </div>
     </x-slot>
     <div class="py-12">
-    @foreach($ressources as $res)
+    @foreach($support as $sup)
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
-            <a href="{{ url('/showressource', [$res->id]) }}"><div class="p-6 text-gray-900 dark:text-gray-100">
+            <a href="{{ url('/showsupport', [$sup->id]) }}"><div class="p-6 text-gray-900 dark:text-gray-100">
                 <table>
                 <tr>
-                    <td><img class="h-16" src="storage/icons/{{ $res->icon }}"></td>
-                    <td><h1>{{ $res->title }}</h1> <p>{{ $res->description }}</p></td>
+                    <td><h1>{{ $sup->subject }}</h1> <p>{{ $sup->user }}</p></td>
                 </tr>
 
                 </table>

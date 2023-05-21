@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adress', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('streetNum');
-            $table->text('street');
-            $table->bigInteger('postalCode');
-            $table->text('city');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('role')->default('citoyen')->nullable();;
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adress');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

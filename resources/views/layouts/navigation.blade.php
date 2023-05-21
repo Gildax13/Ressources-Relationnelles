@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('accueil') }}">
-                    <img class="h-16 w-auto bg-gray-100 dark:bg-gray-900" src="img/logo.png"></img>
+                    <img class="h-16 w-auto bg-gray-100 dark:bg-gray-900" src="{{ asset('img/logo.png') }}"></img>
                     </a>
                 </div>
 
@@ -18,6 +18,14 @@
                     <x-nav-link :href="route('ressources')" :active="request()->routeIs('ressources')">
                         {{ __('Ressources') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('support')" :active="request()->routeIs('support')">
+                        {{ __('Support') }}
+                    </x-nav-link>
+                    @if(auth()->user()->role == 'admin')
+                    <x-nav-link :href="route('checksupport')" :active="request()->routeIs('checksupport')">
+                        {{ __('Demande de Support') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

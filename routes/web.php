@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Ressources;
 use App\Http\Controllers\RessourcesController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\SupportController;
+use App\Models\Support;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,13 @@ Route::get('/support', function () {
     return view('support');
 })->middleware(['auth', 'verified'])->name('support');
 
+Route::get('checksupport',function(){
+    $support = Support::all();
+    return view('checksupport', [
+        'support' => $support
+    ]);
+})->middleware(['auth', 'verified', 'role:admin'])->name('checksupport');
+
 Route::get('/ressources', function () {
     $ressources = Ressources::all();
 
@@ -46,6 +56,15 @@ Route::middleware('auth')->group(function () {
 Route::get('createressource', [RessourcesController::class, 'create']);
 Route::post('storeressource', [RessourcesController::class, 'store']);
 
+Route::post('storecomment/{id}', [CommentsController::class, 'store']);
+Route::post('storesupport', [SupportController::class, 'store']);
+
+Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    
+    Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
+});
 
 
 require __DIR__.'/auth.php';

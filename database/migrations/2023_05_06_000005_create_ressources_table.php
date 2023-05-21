@@ -19,11 +19,10 @@ return new class extends Migration
         Schema::create('ressources', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug')->unique();
             $table->string('content');
             $table->string('description');
-            $table->string('file')->nullable()->default('file.pdf');
-            $table->string('icon')->nullable()->default('icon.png');
+            $table->string('file')->nullable();
+            $table->string('icon')->default('icon.png')->nullable();
             $table->foreignId('categories_id')->references('id')->on('categories');
             $table->foreignId('users_id')->references('id')->on('users');
             $table->foreignId('types_id')->references('id')->on('types');

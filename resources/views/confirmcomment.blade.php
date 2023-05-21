@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Formulaire d\'ajout de ressources') }}
+            {{ __('Merci pour votre avis') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -11,15 +11,14 @@
                     <br>
                     <div class="container">
                         <div class="row card text-vblack bg-dark dark:text-white">
-                            <h4 class="card-header">Merci pour l'ajout de votre ressource</h4>
+                            <h4 class="card-header">Merci pour votre commentaire</h4>
                             <div class="card-body">
-                                <p class="card-text">Votre ressource a bien été ajouter dans le système</p>
+                            <a href="{{ url('/accueil') }}"><button style="border: 1px ridge black;">Retour a l'accueil</button></a> <a href="{{ url('/showressource', [$ressource]) }}"><button style="border: 1px ridge black;">Retourner a la ressource commentée</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </form>
     </div>
 </x-app-layout>

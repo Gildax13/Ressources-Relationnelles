@@ -24,7 +24,6 @@ class Ressources extends Model
         'title',
         'content',
         'description',
-        'slug',
         'file',
         'icon',
         'categories_id',
@@ -40,7 +39,7 @@ class Ressources extends Model
         'title' => 'Default Title',
         'file' => 'file.pdf',
         'icon' => 'icon.png',
-        'description' => 'C\'est une description connard'
+        'description' => 'C\'est une description'
     ];
     public function user(): BelongsTo
     {

@@ -9,7 +9,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <table>
-                        <form action="{{ url('storeressource') }}" method="POST">
+                        <form action="{{ url('storeressource') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <tr>
                                 <td><label class="dark:text-white text-black" for="title">Entrez le titre : </label></td>
@@ -24,16 +24,12 @@
                                 <td><input type="text" name="desc" id="desc"></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="slug">Entrez le slug : </label></td>
-                                <td><input type="text" name="slug" id="slug"></td>
-                            </tr>
-                            <tr>
                                 <td><label class="dark:text-white text-black" for="file">Entrez le file : </label></td>
                                 <td><input type="file" name="file" id="file"></td>
                             </tr>
                             <tr>
                                 <td><label class="dark:text-white text-black" for="icon">Ajouter l'icone : </label></td>
-                                <td><input type="file" name="icon" id="icon"></td>
+                                <td><input type="file" name="icon" id="icon" accept="image\png image\jpg"></td>
                             </tr>
                             <tr>
                                 <td><label class="dark:text-white text-black" for="icon">Type : </label></td>
