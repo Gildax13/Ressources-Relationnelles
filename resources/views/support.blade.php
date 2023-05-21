@@ -12,22 +12,22 @@
                         <form action="{{ url('storesupport') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <tr>
-                                <td><label class="dark:text-white text-black" for="subject">Entrez le titre : </label></td>
-                                <td><input type="text" name="subject" id="subject"></td>
+                                <td><x-input-label for="subject" :value="__('Sujet du support')" /></td>
+                                <td><x-text-input id="subject" class="block mt-1 w-full" type="text" name="subject" required /></td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="reason">Entrez le Contenu : </label></td>
-                                <td>
+                            <td><x-input-label for="subject" :value="__('Catégorie du Support :')" /></td>
+                                <td style="padding-left:10px">
                                     <br>
-                                    <input type="radio" name="reason" id="reason" value="Ressources" /> Ressources<br>
-                                    <input type="radio" name="reason" id="reason" value="Site" /> Site<br>
-                                    <input type="radio" name="reason" id="reason" value="Signalement" /> Signalement<br>
+                                    <input type="radio" name="reason" id="reason" value="Ressources" required /> Ressources<br>
+                                    <input type="radio" name="reason" id="reason" value="Site" required /> Site<br>
+                                    <input type="radio" name="reason" id="reason" value="Signalement" required /> Signalement<br>
                                     <br>
                                 </td>
                             </tr>
                             <tr>
-                                <td><label class="dark:text-white text-black" for="information">Entrez la description : </label></td>
-                                <td><input type="text" name="information" id="information"></td>
+                            <td><x-input-label for="information" :value="__('Information')" /></td>
+                                <td><x-text-input id="information" class="block mt-1 w-full" type="text" name="information" required /></td>
                             </tr>
                     </table>
                     <input type="submit" value="Envoyer !">

@@ -60,7 +60,7 @@
                             @csrf
                             <tr>
                                 <td style="width:20%"><label class="dark:text-white text-black" for="content">Saisir votre Commentaire</label></td>
-                                <td><input type="text" name="content" id="content" style="width:100%"></td>
+                                <td><input type="text" name="content" id="content" style="width:100%" required></td>
                             </tr>
                             </table>
                             <input type="submit" value="Envoyer !" style="border: 1px ridge black;">
