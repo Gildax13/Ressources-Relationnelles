@@ -1,12 +1,12 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="border-b border-gray-100 dark:border-gray-700" style="background-color:#03989E">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('accueil') }}">
-                    <img class="h-16 w-auto bg-gray-100 dark:bg-gray-900" src="{{ asset('img/logo.png') }}"></img>
+                        <img class="h-16 w-auto bg-gray-100 dark:bg-gray-900" src="{{ asset('img/logo.png') }}"></img>
                     </a>
                 </div>
 
@@ -50,12 +50,10 @@
                         </x-dropdown-link>
 
                         <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logout') }}" style="
+    margin-bottom: 0px;">
                             @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -81,6 +79,17 @@
             <x-responsive-nav-link :href="route('accueil')" :active="request()->routeIs('accueil')">
                 {{ __('Accueil') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('ressources')" :active="request()->routeIs('ressources')">
+                {{ __('Ressources') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('support')" :active="request()->routeIs('support')">
+                {{ __('Support') }}
+            </x-responsive-nav-link>
+            @if(auth()->user()->role == 'admin')
+            <x-responsive-nav-link :href="route('checksupport')" :active="request()->routeIs('checksupport')">
+                {{ __('Demande de Support') }}
+            </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
@@ -99,8 +108,7 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

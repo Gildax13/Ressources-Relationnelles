@@ -5,7 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Type;
-use App\Models\Category;
+use App\Models\Categories;
 use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
@@ -22,10 +22,13 @@ class DatabaseSeeder extends Seeder
         // ]);
 
          Type::factory()->create([
-             'name' => 'Type1',
+             'name' => 'Texte',
          ]);
-        Category::factory()->create([
-            'name' => 'Category1',
+        Categories::factory()->create([
+            'name' => 'Séries',
+        ]);
+        Categories::factory()->create([
+            'name' => 'Films',
         ]);
         User::factory()->create();
     }
