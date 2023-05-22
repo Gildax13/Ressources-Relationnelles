@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
-use App\Models\Category;
+use App\Models\Categories;
 use App\Models\Type;
 use App\Models\Comments;
 
@@ -22,7 +22,7 @@ class RessourcesController extends Controller
     public function create(): View
     {
         $type = Type::all();
-        $category = Category::all();
+        $category = Categories::all();
         return view('createressource',
         ['types' => $type,
         'categories' => $category]);
