@@ -40,7 +40,6 @@ class RessourcesController extends Controller
         $category = $request->categories_id;
         $type = $request->types_id;
         $desc = $request->input('desc');
-        //dd($request->icon->getClientOriginalName());
         $data=array(
             "title"=>$title,
             "content"=>$content,
@@ -50,20 +49,17 @@ class RessourcesController extends Controller
             "users_id" => auth()->user()->id,
             'created_at' => date('Y-m-d H:i:s'),
         );
-        //dd($content);
         if($icon != null){
             $data["icon"] = $icon->getClientOriginalName();
             $icon->storeAs('public/icons',$icon->getClientOriginalName());
-            // $nameFile = Storage::disk('public')->put('icons/'.$icon->getClientOriginalName(), $icon);
-            // dd(Storage::get($nameFile));
         }
         if($file != null){
             $data["file"] = $file;
         }
-        //dd($data);
         DB::table('ressources')->insert($data);
         return view('confirmressource');
     }
+    
     /**
      * Display the specified resource.
      *
@@ -75,9 +71,7 @@ class RessourcesController extends Controller
         $ressource = Ressources::where('id', '=', $id)->firstOrFail();
         $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
         $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
-        //dd($user);
         $url = '/storage/icons/'.$ressource->icon;
-        //dd($ressource);
         return view('showressource',
         ['ressource' => $ressource,
             'url' => $url,
@@ -85,10 +79,4 @@ class RessourcesController extends Controller
         'comment' => $comment
     ]);
     }
-
-
-
-
-
-
 }
