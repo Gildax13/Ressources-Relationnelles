@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+use function GuzzleHttp\Promise\all;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::get('/accueil', function () {
-    $ressource = DB::select('SELECT * FROM ressources ORDER BY created_at DESC LIMIT 3');
+    $ressource = DB::select('SELECT * FROM ressources WHERE verified = 1 ORDER BY created_at DESC LIMIT 3');
     return view('accueil', ['ressource'=>$ressource]);
 })->middleware(['auth', 'verified'])->name('accueil');
 Route::get('/support', function () {
@@ -40,7 +42,7 @@ Route::get('checksupport',function(){
     ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('checksupport');
 Route::get('/ressources', function () {
-    $ressources = Ressources::all();
+    $ressources = Ressources::where('verified', '=', 1)->get();
 
     return view('ressources', [
         'ressources' => $ressources
@@ -51,13 +53,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('createressource', [RessourcesController::class, 'create']);
-Route::post('storeressource', [RessourcesController::class, 'store']);
-Route::post('storecomment/{id}', [CommentsController::class, 'store']);
-Route::post('storesupport', [SupportController::class, 'store']);
-Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show');
+Route::get('createressource', [RessourcesController::class, 'create'])->middleware(['auth', 'verified'])->name('createressource');
+Route::post('storeressource', [RessourcesController::class, 'store'])->middleware(['auth', 'verified'])->name('storeressource');
+Route::post('storecomment/{id}', [CommentsController::class, 'store'])->middleware(['auth', 'verified'])->name('storecomment.id');
+Route::post('storesupport', [SupportController::class, 'store'])->middleware(['auth', 'verified'])->name('storesupport');
+Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show')->middleware(['auth', 'verified'])->name('showressource.id');
+
 Route::middleware(['auth', 'role:admin'])->group(function () {  
     Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
 });
+Route::get('verifyressource', function () {
+    $ressources = Ressources::where('verified', '=', 0)->get();
 
+    return view('verifyressource', [
+        'ressources' => $ressources
+    ]);
+})->middleware(['auth', 'verified', 'role:admin'])->name('verifyressource');
+
+Route::get('shownotverifiedressource/{id}', [RessourcesController::class,'show'])->name('ressource.show')->middleware(['auth', 'verified'])->name('ressources');
 require __DIR__.'/auth.php';
