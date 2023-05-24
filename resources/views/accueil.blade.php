@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Accueil') }}
         </h2>
     </x-slot>
@@ -26,7 +26,7 @@
                             <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-md sm:rounded-lg">
                                 <table>
                                     <tr>
-                                        <td><img class="h-16" src="storage/icons/{{ $res->icon }}"></td>
+                                        <td><img class="h-16" src="{{ asset('storage/icons/'.$res->icon) }}"></td>
                                         <td>
                                             <h1>{{ $res->title }}</h1>
                                             <p>{{ $res->description }}</p>

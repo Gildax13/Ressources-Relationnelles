@@ -18,11 +18,16 @@
 </style>
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ $ressource->title }}
+        <div style="width:20px;height:20px;">
+        <a href="{{ url('/verifyressource') }}"><img style="width:20px;height:20px;" src="{{ asset('img/retour.png') }}"></a>
+        </div>
+    
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 ">
+        {{ $ressource->title }}
         </h2>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
         </div>
+        
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

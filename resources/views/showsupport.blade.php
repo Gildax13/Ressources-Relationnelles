@@ -18,7 +18,10 @@
 </style>
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <div style="width:20px;height:20px;">
+        <a href="{{ url('/checksupport') }}"><img style="width:20px;height:20px;" src="{{ asset('img/retour.png') }}"></a>
+        </div>
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
             Demande de support pour : {{ $support->subject}}
         </h2>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

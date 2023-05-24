@@ -70,5 +70,6 @@ Route::get('verifyressource', function () {
     ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('verifyressource');
 
-Route::get('shownotverifiedressource/{id}', [RessourcesController::class,'show'])->name('ressource.show')->middleware(['auth', 'verified'])->name('ressources');
+Route::get('shownotverifiedressource/{id}', [RessourcesController::class,'shownotverified'])->name('shownotverifiedressource.id')->middleware(['auth', 'verified','role:admin']);
+Route::get('verifyressource/{id}', [RessourcesController::class,'verifyressource'])->name('verifyressource.id')->middleware(['auth', 'verified','role:admin']);
 require __DIR__.'/auth.php';
