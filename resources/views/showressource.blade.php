@@ -18,7 +18,10 @@
 </style>
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <div style="width:20px;height:20px;">
+        <a href="{{ url('/ressources') }}"><img style="width:20px;height:20px;" src="{{ asset('img/retour.png') }}"></a>
+        </div>
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ $ressource->title }}
         </h2>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -59,8 +62,8 @@
                         <form action="{{ url('/storecomment', [$ressource->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <tr>
-                                <td style="width:20%"><label class="dark:text-white text-black" for="content">Saisir votre Commentaire</label></td>
-                                <td><input type="text" name="content" id="content" style="width:100%" required></td>
+                                <td style="width:20%"><x-input-label for="content" :value="__('Saisir votre Commentaire')" /></td>
+                                <td><x-text-input id="content" class="block mt-1 w-full" type="text" name="content" required /></td>
                             </tr>
                             </table>
                             <input type="submit" value="Envoyer !" style="border: 1px ridge black;">

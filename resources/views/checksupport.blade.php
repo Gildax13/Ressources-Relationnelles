@@ -5,7 +5,7 @@ h1 {
 </style>
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Demande de Support') }}
         </h2>
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
