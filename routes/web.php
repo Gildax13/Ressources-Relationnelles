@@ -24,18 +24,19 @@ use function GuzzleHttp\Promise\all;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/accueil', function () {
     $ressource = DB::select('SELECT * FROM ressources WHERE verified = 1 ORDER BY created_at DESC LIMIT 3');
-    return view('accueil', ['ressource'=>$ressource]);
+    return view('accueil', ['ressource' => $ressource]);
 })->middleware(['auth', 'verified'])->name('accueil');
 Route::get('/support', function () {
     return view('support');
 })->middleware(['auth', 'verified'])->name('support');
-Route::get('checksupport',function(){
+Route::get('checksupport', function () {
     $support = Support::all();
     return view('checksupport', [
         'support' => $support
@@ -57,10 +58,10 @@ Route::get('createressource', [RessourcesController::class, 'create'])->middlewa
 Route::post('storeressource', [RessourcesController::class, 'store'])->middleware(['auth', 'verified'])->name('storeressource');
 Route::post('storecomment/{id}', [CommentsController::class, 'store'])->middleware(['auth', 'verified'])->name('storecomment.id');
 Route::post('storesupport', [SupportController::class, 'store'])->middleware(['auth', 'verified'])->name('storesupport');
-Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show')->middleware(['auth', 'verified'])->name('showressource.id');
+Route::get('showressource/{id}', [RessourcesController::class, 'show'])->name('ressource.show')->middleware(['auth', 'verified'])->name('showressource.id');
 
-Route::middleware(['auth', 'role:admin'])->group(function () {  
-    Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('showsupport/{id}', [SupportController::class, 'show'])->name('support.show');
 });
 Route::get('verifyressource', function () {
     $ressources = Ressources::where('verified', '=', 0)->get();
@@ -70,6 +71,10 @@ Route::get('verifyressource', function () {
     ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('verifyressource');
 
-Route::get('shownotverifiedressource/{id}', [RessourcesController::class,'shownotverified'])->name('shownotverifiedressource.id')->middleware(['auth', 'verified','role:admin']);
-Route::get('verifyressource/{id}', [RessourcesController::class,'verifyressource'])->name('verifyressource.id')->middleware(['auth', 'verified','role:admin']);
-require __DIR__.'/auth.php';
+Route::get('shownotverifiedressource/{id}', [RessourcesController::class, 'shownotverified'])->name('shownotverifiedressource.id')->middleware(['auth', 'verified', 'role:admin']);
+Route::get('verifyressource/{id}', [RessourcesController::class, 'verifyressource'])->name('verifyressource.id')->middleware(['auth', 'verified', 'role:admin']);
+
+
+
+
+require __DIR__ . '/auth.php';
