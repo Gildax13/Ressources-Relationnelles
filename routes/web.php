@@ -25,7 +25,10 @@ use function GuzzleHttp\Promise\all;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    $ressources = Ressources::where('verified', '=', 1)->get();
+    return view('welcome', [
+        'ressources' => $ressources
+    ]);
 });
 
 Route::get('/accueil', function () {
@@ -43,11 +46,11 @@ Route::get('checksupport',function(){
 })->middleware(['auth', 'verified', 'role:admin'])->name('checksupport');
 Route::get('/ressources', function () {
     $ressources = Ressources::where('verified', '=', 1)->get();
-
     return view('ressources', [
         'ressources' => $ressources
     ]);
 })->middleware(['auth', 'verified'])->name('ressources');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -58,6 +61,8 @@ Route::post('storeressource', [RessourcesController::class, 'store'])->middlewar
 Route::post('storecomment/{id}', [CommentsController::class, 'store'])->middleware(['auth', 'verified'])->name('storecomment.id');
 Route::post('storesupport', [SupportController::class, 'store'])->middleware(['auth', 'verified'])->name('storesupport');
 Route::get('showressource/{id}', [RessourcesController::class,'show'])->name('ressource.show')->middleware(['auth', 'verified'])->name('showressource.id');
+Route::get('showressourceguest/{id}', [RessourcesController::class,'showguest'])->name('ressource.showguest')->name('showressourceguest.id');
+
 
 Route::middleware(['auth', 'role:admin'])->group(function () {  
     Route::get('showsupport/{id}', [SupportController::class,'show'])->name('support.show');
