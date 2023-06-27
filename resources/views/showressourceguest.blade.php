@@ -73,25 +73,25 @@
                                 </div>
                             </div>
                         </a>
-                        <a class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                        <a class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                             <div>
                                 <h2 class="text-xl font-semibold text-white dark:text-white">Commentaires</h2>
                             </div>
+                            @foreach($comment as $com)
+                            <div>
+                                <div class="dark:bg-gray-800 dark:text-white text-white overflow-hidden shadow-sm sm:rounded-lg">
+                                <div class="p-4 text-white dark:text-white">
+                                    <hr style="margin-bottom: 1em; margin-top:1em">
+                                    <table>
+                                    <tr>
+                                        <td>{{ $com->name }} : <p>{{ $com->content }}</p></td>
+                                    </tr>
+                                    </table>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </a>
-
-                        @foreach($comment as $com)
-        <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-            <div class="dark:bg-gray-800 dark:text-white text-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-white dark:text-white">
-                <table>
-                <tr>
-                    <td>{{ $com->name }} : <p>{{ $com->content }}</p></td>
-                </tr>
-                </table>
-                </div>
-            </div>
-        </div>
-        @endforeach
                         
                 </div>
             </div>
