@@ -116,4 +116,12 @@ class RessourcesController extends Controller
     ]);
     }
 
+    public function deletenotverifiedressource(int $id){
+        DB::statement('DELETE FROM ressources WHERE id = '.$id);
+        $ressources = Ressources::where('verified', '=', 0)->get();
+
+        return view('verifyressource', [
+            'ressources' => $ressources
+        ]);
+    }
 }
