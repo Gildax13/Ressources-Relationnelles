@@ -31,52 +31,67 @@
                 </div>
             @endif
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                    <img class="h-8 w-auto bg-gray-100 dark:bg-gray-900" src="{{ asset('img/logo.png') }}"></img>
-                </div>
-
                 <div class="mt-16">
                     <div class="grid grid-cols-1 md:grid-cols-1 gap-6 lg:gap-8">
+                        <div>
+                            <a class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500" href="{{ url('/') }}"><img style="width:20px;height:20px;" src="{{ asset('img/retour.png') }}">
+                                <h2 class="mx-auto font-semibold text-2xl text-white dark:text-white leading-tight">
+                                    {{ $ressource->title }}
+                                </h2></a>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            </div>
+
                         <a class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                             <div>
-                                <div class="h-16 w-16 bg-red-50 dark:bg-white-800/20 flex items-center justify-center rounded-full">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-7 h-7 stroke-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                                    </svg>
-                                </div>
-
-                                <h2 class="mt-6 text-xl font-semibold text-white dark:text-white">Qu'est ce que c'est Ressources Relationelles ?</h2>
-
-                                <p class="mt-4 text-white dark:text-white text-sm leading-relaxed">
-                                    Ressources Relationelles est une plateforme mettant a dispositions des documents permettant d'augmenter et d'améliorer les relations sociales
-                                </p>
-                            </div>
-                        </a>
-                        <a class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                            <div>
-                                <h2 class="text-xl font-semibold text-white dark:text-white">Ressources</h2>
-                            </div>
-                        </a>
-
-                        <div class="py-12">
-                            @foreach($ressources as $res)
-                                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                                    <div class="dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
-                                    <a href="{{ url('/showressourceguest', [$res->id]) }}"><div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                                        <table>
-                                        <tr>
-                                            <td><img class="h-16" src="{{ asset('storage/icons/'.$res->icon) }}"></td>
-                                            <td><h1>{{ $res->title }}</h1> <p>{{ $res->description }}</p></td>
-                                        </tr>
-                        
-                                        </table>
-                                        </div></a>
+                                <div class="py-12">
+                                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                                        <div class="dark:bg-gray-800 dark:text-white text-white overflow-hidden shadow-sm sm:rounded-lg">
+                                            <table>
+                                                <tr>
+                                                    <td colspan="2" class="center mx-auto sm:px-6 lg:px-8">
+                                                        <img id="icon" src="{{ asset($url) }}">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" class="center mx-auto sm:px-6 lg:px-8">
+                                                        <h1>{{ $ressource->title }}</h1>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Ecrit par : {{ $user}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><hr><br></td>
+                                                </tr>
+                                                <td colspan="2" class="center mx-auto sm:px-6 lg:px-8">
+                                                    {{$ressource->content}}
+                                            </td>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-                                <br>
-                                @endforeach
                             </div>
+                        </a>
+                        <a class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                            <div>
+                                <h2 class="text-xl font-semibold text-white dark:text-white">Commentaires</h2>
+                            </div>
+                        </a>
+
+                        @foreach($comment as $com)
+        <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+            <div class="dark:bg-gray-800 dark:text-white text-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 text-white dark:text-white">
+                <table>
+                <tr>
+                    <td>{{ $com->name }} : <p>{{ $com->content }}</p></td>
+                </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+        @endforeach
                         
                 </div>
             </div>
