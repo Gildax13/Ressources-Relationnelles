@@ -79,6 +79,19 @@ class RessourcesController extends Controller
         'comment' => $comment
     ]);
     }
+    public function showguest(int $id)
+    {
+        $ressource = Ressources::where('id', '=', $id)->firstOrFail();
+        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
+        $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
+        $url = '/storage/icons/'.$ressource->icon;
+        return view('showressourceguest',
+        ['ressource' => $ressource,
+            'url' => $url,
+        'user'=> $user,
+        'comment' => $comment
+    ]);
+    }
 
     public function shownotverified(int $id)
     {
@@ -103,4 +116,12 @@ class RessourcesController extends Controller
     ]);
     }
 
+    public function deletenotverifiedressource(int $id){
+        DB::statement('DELETE FROM ressources WHERE id = '.$id);
+        $ressources = Ressources::where('verified', '=', 0)->get();
+
+        return view('verifyressource', [
+            'ressources' => $ressources
+        ]);
+    }
 }

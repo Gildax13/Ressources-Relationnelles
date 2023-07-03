@@ -18,8 +18,8 @@
 </style>
 <x-app-layout>
     <x-slot name="header">
-    <div style="width:20px;height:20px;">
-        <a href="{{ url('/ressources') }}"><img style="width:20px;height:20px;" src="{{ asset('img/retour.png') }}"></a>
+        <div style="width:20px;height:20px;">
+            <a href="{{ url('/ressources') }}"><img style="width:20px;height:20px;" src="{{ asset('img/retour.png') }}"></a>
         </div>
         <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ $ressource->title }}
@@ -45,44 +45,47 @@
                         <td>Ecrit par : {{ $user}}</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><hr><br></td>
+                        <td colspan="2">
+                            <hr><br>
+                        </td>
                     </tr>
                     <td colspan="2" class="center mx-auto sm:px-6 lg:px-8">
                         {{$ressource->content}}
-                </td>
+                    </td>
                 </table>
             </div>
         </div>
     </div>
-    
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
-            <table>
-                        <form action="{{ url('/storecomment', [$ressource->id]) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <tr>
-                                <td style="width:20%"><x-input-label for="content" :value="__('Saisir votre Commentaire')" /></td>
-                                <td><x-text-input id="content" class="block mt-1 w-full" type="text" name="content" required /></td>
-                            </tr>
-                            </table>
-                            <input type="submit" value="Envoyer !" style="border: 1px ridge black;">
+                <table>
+                    <form action="{{ url('/storecomment', [$ressource->id]) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <tr>
+                            <td style="width:20%"><x-input-label for="content" :value="__('Saisir votre Commentaire')" /></td>
+                            <td><x-text-input id="content" class="block mt-1 w-full" type="text" name="content" required /></td>
+                        </tr>
+                </table>
+                <input type="submit" value="Envoyer !" style="border: 1px ridge black;">
                 </form>
                 <h1>Commentaires :</h1>
                 @foreach($comment as $com)
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900 dark:text-gray-100">
-                <table>
-                <tr>
-                    <td>{{ $com->name }} : <p>{{ $com->content }}</p></td>
-                </tr>
-                </table>
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900 dark:text-gray-100">
+                            <table>
+                                <tr>
+                                    <td>{{ $com->name }} : <p>{{ $com->content }}</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <br>
-        @endforeach
+                <br>
+                @endforeach
             </div>
         </div>
     </div>
