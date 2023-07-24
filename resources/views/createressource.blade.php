@@ -4,9 +4,15 @@
             {{ __('Formulaire d\'ajout de ressources') }}
         </h2>
     </x-slot>
+    <style>
+        .hoverbordergreen:hover {
+            border-color: #03989E !important;
+            transition: border-color 112ms linear !important;
+        }
+    </style>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="dark:bg-gray-800 bg-white dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <table>
                         <form action="{{ url('storeressource') }}" method="POST" enctype="multipart/form-data">
@@ -31,7 +37,7 @@
                                 <td><x-input-label for="icon" :value="__('Icone')" /></td>
                                 <td><input type="file" name="icon" id="icon" accept="image\png image\jpg"></td>
                             </tr>
-                            <tr>
+                            <tr class="dark:text-black">
                                 <td><x-input-label for="type" :value="__('Type de ressource')" /></td>
                                 <td><select name="types_id" id="type" class="form-control">
                                         @foreach($types as $type)
@@ -39,7 +45,7 @@
                                         @endforeach
                                     </select></td>
                             </tr>
-                            <tr>
+                            <tr class="dark:text-black">
                                 <td><x-input-label for="category" :value="__('Catégorie de ressource')" /></td>
                                 <td><select name="categories_id" id="category" class="form-control">
                                         @foreach($categories as $category)
@@ -50,7 +56,7 @@
                             <br>
                             <!-- Insérez les SELECT pour les ID des catégories, users et Type -->
                     </table>
-                    <input type="submit" value="Envoyer !">
+                    <input type="submit" value="Envoyer !" style="border: 1px ridge black;" class="mt-4 mb-6 px-4 py-1.5 rounded-md float-right hoverbordergreen">
                     </form>
 
 

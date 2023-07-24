@@ -1,21 +1,4 @@
-<style>
-    .center {
-        text-align: center;
-    }
 
-    table {
-        width: 100%;
-    }
-
-    #icon {
-        width: 50%;
-        display: inline;
-    }
-
-    h1 {
-        font-weight: 1000 !important;
-    }
-</style>
 <x-app-layout>
     <x-slot name="header">
     <div style="width:20px;height:20px;">
@@ -27,9 +10,27 @@
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
         </div>
     </x-slot>
+    <style>
+        .center {
+            text-align: center;
+        }
+    
+        table {
+            width: 100%;
+        }
+    
+        #icon {
+            width: 50%;
+            display: inline;
+        }
+    
+        h1 {
+            font-weight: 1000 !important;
+        }
+    </style>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="dark:bg-gray-800 bg-white dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg">
                 <table>
                     <tr>
                         <td colspan="2">Support de : {{ $user}}</td>

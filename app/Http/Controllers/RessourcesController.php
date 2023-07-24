@@ -70,7 +70,10 @@ class RessourcesController extends Controller
     public function show(int $id)
     {
         $ressource = Ressources::where('id', '=', $id)->firstOrFail();
-        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
+        $comment = DB::select('SELECT content, name, comments.created_at FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
+        foreach ($comment as $current) {
+            $current->created_at = Carbon::parse($current->created_at)->translatedFormat('l j F Y \à G:i');
+        }
         $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
         $url = '/storage/icons/'.$ressource->icon;
         return view('showressource',
@@ -100,7 +103,10 @@ class RessourcesController extends Controller
     public function shownotverified(int $id)
     {
         $ressource = Ressources::where('id', '=', $id)->firstOrFail();
-        $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
+        $comment = DB::select('SELECT content, name, comments.created_at FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
+        foreach ($comment as $current) {
+            $current->created_at = Carbon::parse($current->created_at)->translatedFormat('l j F Y \à G:i');
+        }
         $user = User::where('id','=',$ressource->users_id)->firstOrFail()->name;
         $url = '/storage/icons/'.$ressource->icon;
         return view('shownotverifiedressource',

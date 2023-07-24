@@ -69,13 +69,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h1>Dernières ressources : </h1>
+                    <h1>Ressources : </h1>
                     <br>
                     @foreach ($ressources as $res)
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                             <a href="{{ url('/showressourceguest', [$res->id]) }}">
                                 <div
-                                    class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-md sm:rounded-lg">
+                                    class="dark:bg-gray-800 bg-white dark:text-white text-black overflow-hidden shadow-md sm:rounded-lg">
                                     <table>
                                         <tr>
                                             <td><img class="h-16" src="{{ asset('storage/icons/' . $res->icon) }}">

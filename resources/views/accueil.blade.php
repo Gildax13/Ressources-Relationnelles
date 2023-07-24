@@ -23,7 +23,7 @@
                     @foreach($ressource as $res)
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                         <a href="{{ url('/showressource', [$res->id]) }}">
-                            <div class="bg-white dark:bg-gray-800 dark:text-white text-black overflow-hidden shadow-md sm:rounded-lg">
+                            <div class="dark:bg-gray-800 bg-white dark:text-white text-black overflow-hidden shadow-md sm:rounded-lg">
                                 <table>
                                     <tr>
                                         <td><img class="h-16" src="{{ asset('storage/icons/'.$res->icon) }}"></td>
