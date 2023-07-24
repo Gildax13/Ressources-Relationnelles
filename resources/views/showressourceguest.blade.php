@@ -65,7 +65,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="center mx-auto sm:px-6 lg:px-8">
+                                    <td colspan="2" class="pt-4 center mx-auto sm:px-6 lg:px-8">
                                         <h1>{{ $ressource->title }}</h1>
                                     </td>
                                 </tr>
@@ -75,7 +75,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="center mx-auto sm:px-6 lg:px-8"><hr></td>
+                                    <td colspan="2" class="p-4 center mx-auto sm:px-6 lg:px-8"><hr></td>
                                 </tr>
                                 <td colspan="2" class="center mx-auto sm:px-6 lg:px-8">
                                     {{$ressource->content}}
@@ -86,13 +86,13 @@
                 </div>
             </div>
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5" style="min-width: 80vw;">
-                <div class="pb-2 dark:bg-gray-800 bg-white dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg ">
+                <div class="pb-4 dark:bg-gray-800 bg-white dark:text-white text-black overflow-hidden shadow-sm sm:rounded-lg ">
                     <h2 class="text-xl font-semibold text-black dark:text-white p-4 pb-0">Commentaires</h2>
                     @if (!$comment)
                     <br>
                     <div class="p-4 pt-0 pb-2 text-black dark:text-white">
                     <hr>
-                    <p class="pt-1">Cette ressource n'a pas de commentaires</p>
+                    <p class="pt-4">Cette ressource n'a pas de commentaires</p>
                     </div>
                     @else
                     @foreach($comment as $com)
