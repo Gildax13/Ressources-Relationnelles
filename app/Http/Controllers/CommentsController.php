@@ -16,7 +16,7 @@ use App\Models\Comments;
 
 class CommentsController extends Controller
 {
-    public function store(int $id,Request $request):View
+    public function store(int $id,Request $request):RedirectResponse
     {
         $content = $request->input('content');
         $data=array(
@@ -28,11 +28,8 @@ class CommentsController extends Controller
         DB::table('comments')->insert($data);
 
         $comment = DB::select('SELECT content, name FROM comments INNER JOIN users ON comments.users_id = users.id WHERE ressources_id ='.$id .' ORDER BY comments.created_at ASC');
+        $ressource = DB::select('SELECT * from ressources where id ='.$id);
+        return redirect()->back();
 
-        return view('confirmcomment',
-        [
-            'ressource'=>$id
-        ]
-    );
     }
 }
